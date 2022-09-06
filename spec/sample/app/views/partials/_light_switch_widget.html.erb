@@ -1,0 +1,46 @@
+<div>
+    <label for="light_switch">Click me to toggle from day to night</label>
+    <input name="light_switch" type="checkbox" checked data-toggle="toggle" onclick="toggle();">
+</div>
+
+<script>
+
+let lightOn = true
+
+function toggle() {
+
+    let options = {}
+
+    if (lightOn) {
+        lightOn = false
+        options.color = "#343a40"
+    }
+    else {
+        lightOn = true
+        options.color = "#f8f9fa"
+    }
+
+    updateBackgroundColor(options)
+    updateComponentColors(options)
+} 
+
+
+function updateBackgroundColor(options) {
+    document.body.style.backgroundColor = options.color;
+}
+
+function updateComponentColors() {
+    let cards = document.getElementsByClassName("card")
+    let bootstrapClassname = ""
+
+    if (lightOn){
+        bootstrapClassname = "card bg-primary text-light"
+    } else {
+        bootstrapClassname = "card text-white bg-dark mb-3"
+    }
+
+    for (let i=0; i<cards.length; i++) {
+        cards[i].className = bootstrapClassname
+    }
+}
+</script>
